@@ -1,6 +1,49 @@
+## .NET / MAUI
 bin/
 obj/
 *.user
 *.suo
+*.userprefs
+*.cache
+*.log
+
+## IDE
 .vs/
+.vscode/
+.idea/
+*.DotSettings.user
+*.sln.docstates
+
+## macOS
+.DS_Store
+*.swp
+*~.nib
+
+## MauiDevFlow
 .mauidevflow
+
+## Build artifacts
+*.ipa
+*.apk
+*.aab
+*.app
+*.msix
+*.appx
+
+## NuGet
+packages/
+*.nupkg
+
+## Rider
+_ReSharper*/
+
+## NCrunch
+*.ncrunchproject
+*.ncrunchsolution
+
+## Publish profiles
+Properties/PublishProfiles/
+
+## Secrets
+appsettings.*.json
+!appsettings.json

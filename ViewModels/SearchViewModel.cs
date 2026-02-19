@@ -56,8 +56,9 @@ public partial class SearchViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    private async Task GoToDetailAsync(PersonRecord contact)
+    private async Task GoToDetailAsync(PersonRecord? contact)
     {
+        if (contact == null) return;
         await Shell.Current.GoToAsync($"contacts/detail?id={contact.Id}");
     }
 }

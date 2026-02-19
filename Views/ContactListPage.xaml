@@ -6,11 +6,19 @@
              xmlns:models="clr-namespace:AddressBookPlus.Models"
              xmlns:viewmodels="clr-namespace:AddressBookPlus.ViewModels"
              xmlns:controls="clr-namespace:AddressBookPlus.Views.Controls"
+             xmlns:icons="clr-namespace:IconFont.Maui.BootstrapIcons;assembly=IconFont.Maui.BootstrapIcons"
              x:DataType="viewmodels:ContactListViewModel"
              Title="Address Book Plus">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="🔍 Quick" Clicked="OnQuickLookupClicked" />
+        <ToolbarItem Text="Quick Lookup" Clicked="OnQuickLookupClicked">
+            <ToolbarItem.IconImageSource>
+                <FontImageSource Glyph="{x:Static icons:BootstrapIcons.Search}"
+                                 FontFamily="{x:Static icons:BootstrapIcons.FontFamily}"
+                                 Color="{DynamicResource DarkColor}"
+                                 Size="20" />
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
 
     <Grid>

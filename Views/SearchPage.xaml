@@ -31,16 +31,19 @@
         </Border>
         
         <!-- Results Count -->
-        <Label Text="{Binding ResultsCount}" StyleClass="small,text-muted" />
+        <Label StyleClass="small,text-muted">
+            <Label.Text>
+                <Binding Path="Results.Count" StringFormat="{}{0} result(s)" />
+            </Label.Text>
+        </Label>
         
         <!-- Results List -->
         <CollectionView ItemsSource="{Binding Results}" 
                         VerticalScrollBarVisibility="Always"
                         SelectionMode="Single"
-                        SelectedItem="{Binding SelectedContact}"
-                        SelectionChangedCommand="{Binding GoToDetailCommand}">
+                        SelectionChanged="OnResultSelected">
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:Contact">
+                <DataTemplate x:DataType="models:PersonRecord">
                     <Border StyleClass="card,shadow" Margin="0,4">
                         <Grid Padding="16" ColumnDefinitions="60,*,Auto" ColumnSpacing="12">
                             
@@ -51,9 +54,9 @@
                             
                             <!-- Contact Info -->
                             <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
-                                <Label Text="{Binding FullName}" StyleClass="h6" />
-                                <Label Text="{Binding TitleAndCompany}" StyleClass="small,text-muted" IsVisible="{Binding HasTitleOrCompany}" />
-                                <Label Text="{Binding PrimaryPhone}" StyleClass="small" IsVisible="{Binding HasPrimaryPhone}" />
+                                <Label Text="{Binding SortName}" StyleClass="h6" />
+                                <Label Text="{Binding Company}" StyleClass="small,text-muted" />
+                                <Label Text="{Binding Phone1}" StyleClass="small" />
                             </VerticalStackLayout>
                             
                             <!-- Arrow -->

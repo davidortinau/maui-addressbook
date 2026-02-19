@@ -7,13 +7,23 @@
     xmlns:icons="clr-namespace:IconFont.Maui.BootstrapIcons;assembly=IconFont.Maui.BootstrapIcons"
     FlyoutBehavior="Flyout"
     Shell.BackgroundColor="{DynamicResource DarkColor}"
-    Shell.ForegroundColor="{DynamicResource OnDarkColor}">
+    Shell.ForegroundColor="White"
+    FlyoutBackgroundColor="#212529">
+
+    <Shell.Resources>
+        <Style TargetType="Label" Class="FlyoutItemLabelStyle">
+            <Setter Property="TextColor" Value="White" />
+        </Style>
+        <Style TargetType="Layout" Class="FlyoutItemLayoutStyle">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+        </Style>
+    </Shell.Resources>
 
     <FlyoutItem Title="Address Book" Route="contacts">
         <FlyoutItem.Icon>
             <FontImageSource Glyph="{x:Static icons:BootstrapIcons.PersonLinesFill}"
                              FontFamily="{x:Static icons:BootstrapIcons.FontFamily}"
-                             Color="{DynamicResource OnDarkColor}" />
+                             Color="White" />
         </FlyoutItem.Icon>
         <ShellContent ContentTemplate="{DataTemplate views:ContactListPage}" />
     </FlyoutItem>
@@ -22,7 +32,7 @@
         <FlyoutItem.Icon>
             <FontImageSource Glyph="{x:Static icons:BootstrapIcons.PeopleFill}"
                              FontFamily="{x:Static icons:BootstrapIcons.FontFamily}"
-                             Color="{DynamicResource OnDarkColor}" />
+                             Color="White" />
         </FlyoutItem.Icon>
         <ShellContent ContentTemplate="{DataTemplate views:GroupManagerPage}" />
     </FlyoutItem>
@@ -31,7 +41,7 @@
         <FlyoutItem.Icon>
             <FontImageSource Glyph="{x:Static icons:BootstrapIcons.Search}"
                              FontFamily="{x:Static icons:BootstrapIcons.FontFamily}"
-                             Color="{DynamicResource OnDarkColor}" />
+                             Color="White" />
         </FlyoutItem.Icon>
         <ShellContent ContentTemplate="{DataTemplate views:SearchPage}" />
     </FlyoutItem>
@@ -40,7 +50,7 @@
         <FlyoutItem.Icon>
             <FontImageSource Glyph="{x:Static icons:BootstrapIcons.PrinterFill}"
                              FontFamily="{x:Static icons:BootstrapIcons.FontFamily}"
-                             Color="{DynamicResource OnDarkColor}" />
+                             Color="White" />
         </FlyoutItem.Icon>
         <ShellContent ContentTemplate="{DataTemplate views:PrintPage}" />
     </FlyoutItem>

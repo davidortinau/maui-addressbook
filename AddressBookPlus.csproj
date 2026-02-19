@@ -23,7 +23,7 @@
 		<ApplicationTitle>AddressBookPlus</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.addressbookplus</ApplicationId>
+		<ApplicationId>com.simplyprofound.addressbookplus</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
