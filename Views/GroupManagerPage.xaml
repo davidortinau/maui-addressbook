@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:AddressBookPlus.ViewModels"
+             xmlns:models="clr-namespace:AddressBookPlus.Models"
+             x:Class="AddressBookPlus.Views.GroupManagerPage"
+             x:DataType="viewmodels:GroupManagerViewModel"
+             Title="Groups">
+    
+    <VerticalStackLayout Spacing="16" Padding="16">
+        
+        <!-- Header -->
+        <VerticalStackLayout Spacing="8">
+            <Label Text="Groups" StyleClass="h3" />
+            <Button Text="+ Add Group" StyleClass="btn-success" 
+                    SemanticProperties.Description="Add new group"
+                    Command="{Binding AddGroupCommand}" />
+        </VerticalStackLayout>
+        
+        <!-- Groups List -->
+        <CollectionView ItemsSource="{Binding Groups}" VerticalScrollBarVisibility="Always">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Group">
+                    <Border StyleClass="card,shadow" Margin="0,4">
+                        <Grid Padding="16" ColumnDefinitions="Auto,*,Auto,Auto" ColumnSpacing="12">
+                            
+                            <!-- Slot Badge -->
+                            <Border Grid.Column="0" StyleClass="badge,bg-warning" Padding="8,4">
+                                <Label Text="{Binding SlotNumber}" StyleClass="on-warning" FontAttributes="Bold" />
+                            </Border>
+                            
+                            <!-- Group Name -->
+                            <Label Grid.Column="1" Text="{Binding Name}" StyleClass="h5" VerticalOptions="Center" />
+                            
+                            <!-- Rename Button -->
+                            <Button Grid.Column="2" Text="Rename" StyleClass="btn-outline-primary,btn-sm" 
+                                    SemanticProperties.Description="Rename group"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:GroupManagerViewModel}}, Path=RenameGroupCommand}"
+                                    CommandParameter="{Binding}" />
+                            
+                            <!-- Delete Button -->
+                            <Button Grid.Column="3" Text="Delete" StyleClass="btn-outline-danger,btn-sm"
+                                    SemanticProperties.Description="Delete group"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:GroupManagerViewModel}}, Path=DeleteGroupCommand}"
+                                    CommandParameter="{Binding}" />
+                            
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            
+            <CollectionView.EmptyView>
+                <Label Text="No groups created yet" 
+                       StyleClass="h5,text-muted" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Center" />
+            </CollectionView.EmptyView>
+        </CollectionView>
+        
+    </VerticalStackLayout>
+    
+</ContentPage>

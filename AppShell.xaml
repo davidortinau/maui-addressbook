@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="AddressBookPlus.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:AddressBookPlus.Views"
+    FlyoutBehavior="Flyout"
+    Shell.BackgroundColor="{DynamicResource DarkColor}"
+    Shell.ForegroundColor="{DynamicResource OnDarkColor}">
+
+    <FlyoutItem Title="Address Book" Icon="people" Route="contacts">
+        <ShellContent ContentTemplate="{DataTemplate views:ContactListPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Groups" Icon="folder" Route="groups">
+        <ShellContent ContentTemplate="{DataTemplate views:GroupManagerPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Search" Icon="search" Route="search">
+        <ShellContent ContentTemplate="{DataTemplate views:SearchPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Print" Icon="printer" Route="print">
+        <ShellContent ContentTemplate="{DataTemplate views:PrintPage}" />
+    </FlyoutItem>
+
+</Shell>

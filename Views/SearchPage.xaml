@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:AddressBookPlus.ViewModels"
+             xmlns:models="clr-namespace:AddressBookPlus.Models"
+             x:Class="AddressBookPlus.Views.SearchPage"
+             x:DataType="viewmodels:SearchViewModel"
+             Title="Search">
+    
+    <VerticalStackLayout Spacing="16" Padding="16">
+        
+        <!-- Header -->
+        <Label Text="Search" StyleClass="h3" />
+        
+        <!-- Search Controls -->
+        <Border StyleClass="card,shadow" Padding="16">
+            <VerticalStackLayout Spacing="12">
+                <Entry Text="{Binding SearchQuery}" 
+                       StyleClass="form-control" 
+                       Placeholder="Search contacts..." />
+                
+                <HorizontalStackLayout Spacing="8">
+                    <Button Text="Search" StyleClass="btn-info" 
+                            SemanticProperties.Description="Search contacts"
+                            Command="{Binding SearchCommand}" />
+                    <Button Text="Clear" StyleClass="btn-outline-secondary,btn-sm" 
+                            SemanticProperties.Description="Clear search"
+                            Command="{Binding ClearCommand}" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Border>
+        
+        <!-- Results Count -->
+        <Label Text="{Binding ResultsCount}" StyleClass="small,text-muted" />
+        
+        <!-- Results List -->
+        <CollectionView ItemsSource="{Binding Results}" 
+                        VerticalScrollBarVisibility="Always"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding SelectedContact}"
+                        SelectionChangedCommand="{Binding GoToDetailCommand}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Contact">
+                    <Border StyleClass="card,shadow" Margin="0,4">
+                        <Grid Padding="16" ColumnDefinitions="60,*,Auto" ColumnSpacing="12">
+                            
+                            <!-- Avatar -->
+                            <Border Grid.Column="0" StyleClass="badge,bg-primary" Padding="8" WidthRequest="50" HeightRequest="50">
+                                <Label Text="{Binding Initials}" StyleClass="on-primary" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Border>
+                            
+                            <!-- Contact Info -->
+                            <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                <Label Text="{Binding FullName}" StyleClass="h6" />
+                                <Label Text="{Binding TitleAndCompany}" StyleClass="small,text-muted" IsVisible="{Binding HasTitleOrCompany}" />
+                                <Label Text="{Binding PrimaryPhone}" StyleClass="small" IsVisible="{Binding HasPrimaryPhone}" />
+                            </VerticalStackLayout>
+                            
+                            <!-- Arrow -->
+                            <Label Grid.Column="2" Text="›" StyleClass="h4,text-muted" VerticalOptions="Center" />
+                            
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            
+            <CollectionView.EmptyView>
+                <Label Text="No search results found" 
+                       StyleClass="h5,text-muted" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Center" />
+            </CollectionView.EmptyView>
+        </CollectionView>
+        
+    </VerticalStackLayout>
+    
+</ContentPage>

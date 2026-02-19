@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="AddressBookPlus.Views.PrintPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:AddressBookPlus.ViewModels"
+             x:DataType="viewmodels:PrintViewModel"
+             Title="{Binding Title}">
+
+    <ScrollView>
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,*" 
+              Padding="16" 
+              RowSpacing="16">
+            
+            <!-- Title -->
+            <Label Grid.Row="0" 
+                   Text="Print" 
+                   StyleClass="h3" 
+                   HorizontalOptions="Center" />
+            
+            <!-- Template Selection -->
+            <Border Grid.Row="1" StyleClass="card">
+                <Grid RowDefinitions="Auto,Auto" Padding="16" RowSpacing="8">
+                    <Label Grid.Row="0" 
+                           Text="Print Template" 
+                           StyleClass="form-label" />
+                    <Picker Grid.Row="1"
+                            ItemsSource="{Binding Templates}"
+                            SelectedItem="{Binding SelectedTemplate}"
+                            StyleClass="form-select" />
+                </Grid>
+            </Border>
+            
+            <!-- Contact Count -->
+            <Label Grid.Row="2" 
+                   Text="{Binding Contacts.Count, StringFormat='{0} contacts will be printed'}"
+                   StyleClass="small,text-muted"
+                   HorizontalOptions="Center" />
+            
+            <!-- Preview Button -->
+            <Button Grid.Row="3"
+                    Text="Preview Document" 
+                    Command="{Binding PreviewCommand}"
+                    StyleClass="btn-warning"
+                    SemanticProperties.Description="Preview print document"
+                    HorizontalOptions="Center" />
+            
+            <!-- Preview Area -->
+            <Border Grid.Row="4" 
+                    StyleClass="card,shadow"
+                    IsVisible="{Binding HasPreview}"
+                    Margin="0,8,0,0">
+                <Grid RowDefinitions="Auto,*" Padding="16">
+                    <Label Grid.Row="0" 
+                           Text="Document Preview" 
+                           StyleClass="h6,card-title"
+                           Margin="0,0,0,8" />
+                    <ScrollView Grid.Row="1" MaximumHeightRequest="300">
+                        <Label Text="{Binding PreviewText}" 
+                               FontFamily="Consolas,monospace"
+                               FontSize="12"
+                               LineBreakMode="WordWrap" />
+                    </ScrollView>
+                </Grid>
+            </Border>
+            
+            <!-- Print Note -->
+            <Label Grid.Row="5" 
+                   Text="Print output will be sent to your system printer" 
+                   StyleClass="small,text-muted"
+                   HorizontalOptions="Center"
+                   VerticalOptions="End"
+                   Margin="0,16,0,0" />
+            
+        </Grid>
+    </ScrollView>
+</ContentPage>

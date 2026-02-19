@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:AddressBookPlus.ViewModels"
+             x:Class="AddressBookPlus.Views.ContactEditPage"
+             x:DataType="viewmodels:ContactEditViewModel"
+             Title="{Binding PageTitle}">
+    
+    <ScrollView>
+        <VerticalStackLayout Spacing="16" Padding="16">
+            
+            <!-- Name Section -->
+            <Border StyleClass="card,shadow" Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Name" StyleClass="h5" />
+                    
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Salutation" StyleClass="form-label" />
+                        <Picker StyleClass="form-select" 
+                                ItemsSource="{Binding SalutationOptions}"
+                                SelectedItem="{Binding Salutation}" />
+                    </VerticalStackLayout>
+                    
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="First Name" StyleClass="form-label" />
+                        <Entry Text="{Binding FirstName}" StyleClass="form-control" />
+                    </VerticalStackLayout>
+                    
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Last Name" StyleClass="form-label" />
+                        <Entry Text="{Binding LastName}" StyleClass="form-control" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+            
+            <!-- Work Section -->
+            <Border StyleClass="card,shadow" Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Work" StyleClass="h5" />
+                    
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Title" StyleClass="form-label" />
+                        <Entry Text="{Binding Title}" StyleClass="form-control" />
+                    </VerticalStackLayout>
+                    
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Company" StyleClass="form-label" />
+                        <Entry Text="{Binding Company}" StyleClass="form-control" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+            
+            <!-- Address Section -->
+            <Border StyleClass="card,shadow" Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Address" StyleClass="h5" />
+                    
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Address Line 1" StyleClass="form-label" />
+                        <Entry Text="{Binding AddressLine1}" StyleClass="form-control" />
+                    </VerticalStackLayout>
+                    
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Address Line 2" StyleClass="form-label" />
+                        <Entry Text="{Binding AddressLine2}" StyleClass="form-control" />
+                    </VerticalStackLayout>
+                    
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="8">
+                            <Label Text="City" StyleClass="form-label" />
+                            <Entry Text="{Binding City}" StyleClass="form-control" />
+                        </VerticalStackLayout>
+                        
+                        <VerticalStackLayout Grid.Column="1" Spacing="8">
+                            <Label Text="State" StyleClass="form-label" />
+                            <Entry Text="{Binding State}" StyleClass="form-control" />
+                        </VerticalStackLayout>
+                    </Grid>
+                    
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="8">
+                            <Label Text="Postal Code" StyleClass="form-label" />
+                            <Entry Text="{Binding PostalCode}" StyleClass="form-control" />
+                        </VerticalStackLayout>
+                        
+                        <VerticalStackLayout Grid.Column="1" Spacing="8">
+                            <Label Text="Country" StyleClass="form-label" />
+                            <Entry Text="{Binding Country}" StyleClass="form-control" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+            
+            <!-- Phones Section -->
+            <Border StyleClass="card,shadow" Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Phones" StyleClass="h5" />
+                    
+                    <Grid ColumnDefinitions="*,2*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="8">
+                            <Label Text="Label" StyleClass="form-label" />
+                            <Entry Text="{Binding PhoneLabel1}" StyleClass="form-control" />
+                        </VerticalStackLayout>
+                        
+                        <VerticalStackLayout Grid.Column="1" Spacing="8">
+                            <Label Text="Phone Number" StyleClass="form-label" />
+                            <Entry Text="{Binding PhoneNumber1}" StyleClass="form-control" />
+                        </VerticalStackLayout>
+                    </Grid>
+                    
+                    <Grid ColumnDefinitions="*,2*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="8">
+                            <Label Text="Label" StyleClass="form-label" />
+                            <Entry Text="{Binding PhoneLabel2}" StyleClass="form-control" />
+                        </VerticalStackLayout>
+                        
+                        <VerticalStackLayout Grid.Column="1" Spacing="8">
+                            <Label Text="Phone Number" StyleClass="form-label" />
+                            <Entry Text="{Binding PhoneNumber2}" StyleClass="form-control" />
+                        </VerticalStackLayout>
+                    </Grid>
+                    
+                    <Grid ColumnDefinitions="*,2*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="8">
+                            <Label Text="Label" StyleClass="form-label" />
+                            <Entry Text="{Binding PhoneLabel3}" StyleClass="form-control" />
+                        </VerticalStackLayout>
+                        
+                        <VerticalStackLayout Grid.Column="1" Spacing="8">
+                            <Label Text="Phone Number" StyleClass="form-label" />
+                            <Entry Text="{Binding PhoneNumber3}" StyleClass="form-control" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+            
+            <!-- Additional Section -->
+            <Border StyleClass="card,shadow" Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Additional" StyleClass="h5" />
+                    
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Profession" StyleClass="form-label" />
+                        <Entry Text="{Binding Profession}" StyleClass="form-control" />
+                    </VerticalStackLayout>
+                    
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Birthday" StyleClass="form-label" />
+                        <DatePicker Date="{Binding Birthday}" StyleClass="form-control" />
+                    </VerticalStackLayout>
+                    
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Custom Field Label" StyleClass="form-label" />
+                        <Entry Text="{Binding CustomFieldLabel}" StyleClass="form-control" />
+                    </VerticalStackLayout>
+                    
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Custom Field Value" StyleClass="form-label" />
+                        <Entry Text="{Binding CustomFieldValue}" StyleClass="form-control" />
+                    </VerticalStackLayout>
+                    
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Notes" StyleClass="form-label" />
+                        <Editor Text="{Binding Notes}" StyleClass="form-control" HeightRequest="120" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+            
+            <!-- Action Buttons -->
+            <HorizontalStackLayout Spacing="12" HorizontalOptions="Center">
+                <Button Text="Save" StyleClass="btn-success,btn-lg" 
+                        SemanticProperties.Description="Save contact"
+                        Command="{Binding SaveCommand}" />
+                <Button Text="Cancel" StyleClass="btn-secondary,btn-lg" 
+                        SemanticProperties.Description="Cancel editing"
+                        Command="{Binding CancelCommand}" />
+            </HorizontalStackLayout>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>

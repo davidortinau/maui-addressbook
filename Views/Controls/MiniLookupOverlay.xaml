@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AddressBookPlus.Views.Controls.MiniLookupOverlay"
+             IsVisible="False"
+             x:Name="thisOverlay">
+    
+    <Border StyleClass="card,shadow-lg" Padding="12" WidthRequest="320" HeightRequest="400"
+            HorizontalOptions="End" VerticalOptions="Start" Margin="8">
+        <VerticalStackLayout Spacing="8">
+            <!-- Header -->
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Text="Quick Lookup" StyleClass="h5"/>
+                <Button Grid.Column="1" Text="✕" StyleClass="btn-outline-secondary,btn-sm"
+                        Clicked="OnCloseClicked"/>
+            </Grid>
+            
+            <!-- Search -->
+            <Entry x:Name="SearchEntry" Placeholder="Search..." StyleClass="form-control"
+                   TextChanged="OnSearchTextChanged"/>
+            
+            <!-- Results -->
+            <CollectionView x:Name="ResultsView" HeightRequest="250" SelectionMode="Single"
+                            SelectionChanged="OnSelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Padding="4">
+                            <Label Text="{Binding FullName}" StyleClass="h6"/>
+                            <Label Text="{Binding Phone1}" StyleClass="small,text-muted"/>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.EmptyView>
+                    <Label Text="Type to search..." StyleClass="small,text-muted" 
+                           HorizontalOptions="Center" Margin="0,20"/>
+                </CollectionView.EmptyView>
+            </CollectionView>
+            
+            <!-- Copy action -->
+            <Button x:Name="CopyButton" Text="Copy Phone" StyleClass="btn-info,btn-sm"
+                    IsEnabled="False" Clicked="OnCopyClicked"/>
+        </VerticalStackLayout>
+    </Border>
+</ContentView>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="AddressBookPlus.Views.ContactListPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:AddressBookPlus.Models"
+             xmlns:viewmodels="clr-namespace:AddressBookPlus.ViewModels"
+             xmlns:controls="clr-namespace:AddressBookPlus.Views.Controls"
+             x:DataType="viewmodels:ContactListViewModel"
+             Title="Address Book Plus">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="🔍 Quick" Clicked="OnQuickLookupClicked" />
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <!-- Main content -->
+        <Grid RowDefinitions="Auto,Auto,Auto,*,Auto" Padding="16">
+        
+        <!-- Retro title bar -->
+        <Border StyleClass="card,text-bg-dark" Grid.Row="0" Margin="0,0,0,8">
+            <Grid ColumnDefinitions="*,Auto" Padding="16">
+                <Label Grid.Column="0" 
+                       Text="Address Book Plus" 
+                       StyleClass="h4,on-dark" 
+                       HorizontalOptions="Center" />
+                <Border Grid.Column="1" 
+                        StyleClass="badge,bg-primary">
+                    <Label Text="{Binding ContactCount}" 
+                           StyleClass="on-primary" />
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- Group filter bar -->
+        <ScrollView Grid.Row="1" 
+                    Orientation="Horizontal" 
+                    Margin="0,0,0,8">
+            <HorizontalStackLayout Spacing="8" 
+                                   BindableLayout.ItemsSource="{Binding Groups}">
+                <Button Text="All" 
+                        StyleClass="btn-dark,btn-sm" 
+                        Command="{Binding SelectGroupCommand}" />
+                
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="models:ContactGroup">
+                        <Button Text="{Binding Name}" 
+                                StyleClass="btn-outline-primary,btn-sm" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ContactListViewModel}}, Path=SelectGroupCommand}" 
+                                CommandParameter="{Binding .}" />
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </HorizontalStackLayout>
+        </ScrollView>
+
+        <!-- Search bar -->
+        <SearchBar Grid.Row="2" 
+                   StyleClass="form-control" 
+                   Placeholder="Type to jump..." 
+                   Text="{Binding SearchText}" 
+                   Margin="0,0,0,8" />
+
+        <!-- Contact list -->
+        <CollectionView Grid.Row="3" 
+                        ItemsSource="{Binding Contacts}" 
+                        SelectionMode="Single" 
+                        SelectedItem="{Binding SelectedContact}" 
+                        SelectionChanged="OnContactSelected">
+            
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:PersonRecord">
+                    <Border StyleClass="card" Margin="0,0,0,8">
+                        <Grid ColumnDefinitions="50,*,Auto" Padding="12" RowSpacing="4">
+                            
+                            <!-- Initials avatar -->
+                            <Border Grid.Column="0" 
+                                    StyleClass="badge,bg-primary" 
+                                    WidthRequest="40" 
+                                    HeightRequest="40" 
+                                    HorizontalOptions="Center" 
+                                    VerticalOptions="Center">
+                                <Label Text="{Binding Initials}" 
+                                       StyleClass="on-primary" 
+                                       HorizontalOptions="Center" 
+                                       VerticalOptions="Center" />
+                            </Border>
+
+                            <!-- Name and company -->
+                            <VerticalStackLayout Grid.Column="1" 
+                                                 Spacing="2" 
+                                                 VerticalOptions="Center">
+                                <Label Text="{Binding SortName}" 
+                                       StyleClass="h6" />
+                                <Label Text="{Binding Company}" 
+                                       StyleClass="small,text-muted" />
+                            </VerticalStackLayout>
+
+                            <!-- Phone -->
+                            <Label Grid.Column="2" 
+                                   Text="{Binding Phone1}" 
+                                   StyleClass="small,text-muted" 
+                                   VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <CollectionView.EmptyView>
+                <Label Text="No contacts found" 
+                       StyleClass="h5,text-muted" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Center" />
+            </CollectionView.EmptyView>
+        </CollectionView>
+
+        <!-- Add button -->
+        <Button Grid.Row="4" 
+                Text="+ New Contact" 
+                StyleClass="btn-success,btn-lg" 
+                SemanticProperties.Description="Add new contact"
+                Command="{Binding AddContactCommand}" 
+                Margin="0,8,0,0" />
+
+        </Grid>
+        
+        <!-- Mini Lookup Overlay -->
+        <controls:MiniLookupOverlay x:Name="MiniLookup" />
+    </Grid>
+
+</ContentPage>

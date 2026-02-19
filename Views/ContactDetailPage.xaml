@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:AddressBookPlus.ViewModels"
+             x:Class="AddressBookPlus.Views.ContactDetailPage"
+             x:DataType="viewmodels:ContactDetailViewModel"
+             Title="Contact Details">
+    
+    <ScrollView>
+        <VerticalStackLayout Spacing="12" Padding="16">
+            
+            <!-- Header Card -->
+            <Border StyleClass="card,shadow,text-bg-primary" Padding="16">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="{Binding Contact.FullName}" StyleClass="h2,on-primary" />
+                    <Label Text="{Binding Contact.TitleAndCompany}" StyleClass="on-primary" />
+                </VerticalStackLayout>
+            </Border>
+            
+            <!-- Address Card -->
+            <Border StyleClass="card,shadow" Padding="16" IsVisible="{Binding Contact.HasAddress}">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Address" StyleClass="h5" />
+                    <Label Text="{Binding Contact.AddressLine1}" />
+                    <Label Text="{Binding Contact.AddressLine2}" IsVisible="{Binding Contact.HasAddressLine2}" />
+                    <Label Text="{Binding Contact.CityStateZip}" />
+                    <Label Text="{Binding Contact.Country}" IsVisible="{Binding Contact.HasCountry}" />
+                </VerticalStackLayout>
+            </Border>
+            
+            <!-- Phones Card -->
+            <Border StyleClass="card,shadow" Padding="16" IsVisible="{Binding Contact.HasPhones}">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Phones" StyleClass="h5" />
+                    <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="100,*" RowSpacing="4">
+                        <Label Grid.Row="0" Grid.Column="0" Text="{Binding Contact.PhoneLabel1}" StyleClass="form-label" IsVisible="{Binding Contact.HasPhone1}" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Contact.PhoneNumber1}" IsVisible="{Binding Contact.HasPhone1}" />
+                        
+                        <Label Grid.Row="1" Grid.Column="0" Text="{Binding Contact.PhoneLabel2}" StyleClass="form-label" IsVisible="{Binding Contact.HasPhone2}" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Contact.PhoneNumber2}" IsVisible="{Binding Contact.HasPhone2}" />
+                        
+                        <Label Grid.Row="2" Grid.Column="0" Text="{Binding Contact.PhoneLabel3}" StyleClass="form-label" IsVisible="{Binding Contact.HasPhone3}" />
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding Contact.PhoneNumber3}" IsVisible="{Binding Contact.HasPhone3}" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+            
+            <!-- Details Card -->
+            <Border StyleClass="card,shadow" Padding="16" IsVisible="{Binding Contact.HasDetails}">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Details" StyleClass="h5" />
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="120,*" RowSpacing="4">
+                        <Label Grid.Row="0" Grid.Column="0" Text="Profession" StyleClass="form-label" IsVisible="{Binding Contact.HasProfession}" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Contact.Profession}" IsVisible="{Binding Contact.HasProfession}" />
+                        
+                        <Label Grid.Row="1" Grid.Column="0" Text="Birthday" StyleClass="form-label" IsVisible="{Binding Contact.HasBirthday}" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Contact.BirthdayString}" IsVisible="{Binding Contact.HasBirthday}" />
+                        
+                        <Label Grid.Row="2" Grid.Column="0" Text="{Binding Contact.CustomFieldLabel}" StyleClass="form-label" IsVisible="{Binding Contact.HasCustomField}" />
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding Contact.CustomFieldValue}" IsVisible="{Binding Contact.HasCustomField}" />
+                        
+                        <Label Grid.Row="3" Grid.Column="0" Text="Notes" StyleClass="form-label" IsVisible="{Binding Contact.HasNotes}" />
+                        <Label Grid.Row="3" Grid.Column="1" Text="{Binding Contact.Notes}" IsVisible="{Binding Contact.HasNotes}" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+            
+            <!-- Action Buttons -->
+            <HorizontalStackLayout Spacing="12" HorizontalOptions="Center">
+                <Button Text="Edit" StyleClass="btn-primary" 
+                        SemanticProperties.Description="Edit contact"
+                        Command="{Binding EditCommand}" />
+                <Button Text="Delete" StyleClass="btn-outline-danger" 
+                        SemanticProperties.Description="Delete contact"
+                        Command="{Binding DeleteCommand}" />
+                <Button Text="Copy Address" StyleClass="btn-outline-secondary" 
+                        SemanticProperties.Description="Copy contact address"
+                        Command="{Binding CopyAddressCommand}" />
+            </HorizontalStackLayout>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>

@@ -1,0 +1,543 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AddressBookPlus</name>
+    </assembly>
+    <members>
+        <member name="T:AddressBookPlus.ViewModels.BaseViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.BaseViewModel.IsBusy">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.BaseViewModel._isBusy"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.BaseViewModel.Title">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.BaseViewModel._title"/>
+        </member>
+        <member name="T:AddressBookPlus.ViewModels.ContactDetailViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactDetailViewModel.Contact">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactDetailViewModel._contact"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactDetailViewModel.ContactGroups">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactDetailViewModel._contactGroups"/>
+        </member>
+        <member name="F:AddressBookPlus.ViewModels.ContactDetailViewModel.editCommand">
+            <summary>The backing field for <see cref="P:AddressBookPlus.ViewModels.ContactDetailViewModel.EditCommand"/>.</summary>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactDetailViewModel.EditCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AddressBookPlus.ViewModels.ContactDetailViewModel.EditAsync"/>.</summary>
+        </member>
+        <member name="F:AddressBookPlus.ViewModels.ContactDetailViewModel.deleteCommand">
+            <summary>The backing field for <see cref="P:AddressBookPlus.ViewModels.ContactDetailViewModel.DeleteCommand"/>.</summary>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactDetailViewModel.DeleteCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AddressBookPlus.ViewModels.ContactDetailViewModel.DeleteAsync"/>.</summary>
+        </member>
+        <member name="F:AddressBookPlus.ViewModels.ContactDetailViewModel.copyAddressCommand">
+            <summary>The backing field for <see cref="P:AddressBookPlus.ViewModels.ContactDetailViewModel.CopyAddressCommand"/>.</summary>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactDetailViewModel.CopyAddressCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AddressBookPlus.ViewModels.ContactDetailViewModel.CopyAddressAsync"/>.</summary>
+        </member>
+        <member name="T:AddressBookPlus.ViewModels.ContactEditViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.ContactId">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._contactId"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.Salutation">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._salutation"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.FirstName">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._firstName"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.LastName">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._lastName"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.Title">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._title"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.Company">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._company"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.AddressLine1">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._addressLine1"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.AddressLine2">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._addressLine2"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.City">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._city"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.State">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._state"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.PostalCode">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._postalCode"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.Country">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._country"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.Phone1Label">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._phone1Label"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.Phone1">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._phone1"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.Phone2Label">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._phone2Label"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.Phone2">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._phone2"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.Phone3Label">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._phone3Label"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.Phone3">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._phone3"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.Profession">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._profession"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.Notes">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._notes"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.CustomFieldLabel">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._customFieldLabel"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.CustomFieldValue">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._customFieldValue"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.Birthday">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactEditViewModel._birthday"/>
+        </member>
+        <member name="F:AddressBookPlus.ViewModels.ContactEditViewModel.saveCommand">
+            <summary>The backing field for <see cref="P:AddressBookPlus.ViewModels.ContactEditViewModel.SaveCommand"/>.</summary>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.SaveCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AddressBookPlus.ViewModels.ContactEditViewModel.SaveAsync"/>.</summary>
+        </member>
+        <member name="F:AddressBookPlus.ViewModels.ContactEditViewModel.cancelCommand">
+            <summary>The backing field for <see cref="P:AddressBookPlus.ViewModels.ContactEditViewModel.CancelCommand"/>.</summary>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactEditViewModel.CancelCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AddressBookPlus.ViewModels.ContactEditViewModel.CancelAsync"/>.</summary>
+        </member>
+        <member name="T:AddressBookPlus.ViewModels.ContactListViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactListViewModel.Contacts">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactListViewModel._contacts"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactListViewModel.Groups">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactListViewModel._groups"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactListViewModel.SelectedContact">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactListViewModel._selectedContact"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactListViewModel.SelectedGroup">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactListViewModel._selectedGroup"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactListViewModel.SearchText">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.ContactListViewModel._searchText"/>
+        </member>
+        <member name="M:AddressBookPlus.ViewModels.ContactListViewModel.OnSearchTextChanged(System.String)">
+            <summary>Executes the logic for when <see cref="P:AddressBookPlus.ViewModels.ContactListViewModel.SearchText"/> just changed.</summary>
+            <param name="value">The new property value that was set.</param>
+            <remarks>This method is invoked right after the value of <see cref="P:AddressBookPlus.ViewModels.ContactListViewModel.SearchText"/> is changed.</remarks>
+        </member>
+        <member name="F:AddressBookPlus.ViewModels.ContactListViewModel.loadDataCommand">
+            <summary>The backing field for <see cref="P:AddressBookPlus.ViewModels.ContactListViewModel.LoadDataCommand"/>.</summary>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactListViewModel.LoadDataCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AddressBookPlus.ViewModels.ContactListViewModel.LoadDataAsync"/>.</summary>
+        </member>
+        <member name="F:AddressBookPlus.ViewModels.ContactListViewModel.selectGroupCommand">
+            <summary>The backing field for <see cref="P:AddressBookPlus.ViewModels.ContactListViewModel.SelectGroupCommand"/>.</summary>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactListViewModel.SelectGroupCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:AddressBookPlus.ViewModels.ContactListViewModel.SelectGroupAsync(AddressBookPlus.Models.ContactGroup)"/>.</summary>
+        </member>
+        <member name="F:AddressBookPlus.ViewModels.ContactListViewModel.goToDetailCommand">
+            <summary>The backing field for <see cref="P:AddressBookPlus.ViewModels.ContactListViewModel.GoToDetailCommand"/>.</summary>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactListViewModel.GoToDetailCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:AddressBookPlus.ViewModels.ContactListViewModel.GoToDetailAsync(AddressBookPlus.Models.PersonRecord)"/>.</summary>
+        </member>
+        <member name="F:AddressBookPlus.ViewModels.ContactListViewModel.addContactCommand">
+            <summary>The backing field for <see cref="P:AddressBookPlus.ViewModels.ContactListViewModel.AddContactCommand"/>.</summary>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactListViewModel.AddContactCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AddressBookPlus.ViewModels.ContactListViewModel.AddContactAsync"/>.</summary>
+        </member>
+        <member name="F:AddressBookPlus.ViewModels.ContactListViewModel.refreshCommand">
+            <summary>The backing field for <see cref="P:AddressBookPlus.ViewModels.ContactListViewModel.RefreshCommand"/>.</summary>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.ContactListViewModel.RefreshCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AddressBookPlus.ViewModels.ContactListViewModel.RefreshAsync"/>.</summary>
+        </member>
+        <member name="T:AddressBookPlus.ViewModels.GroupManagerViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.GroupManagerViewModel.Groups">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.GroupManagerViewModel._groups"/>
+        </member>
+        <member name="F:AddressBookPlus.ViewModels.GroupManagerViewModel.loadGroupsCommand">
+            <summary>The backing field for <see cref="P:AddressBookPlus.ViewModels.GroupManagerViewModel.LoadGroupsCommand"/>.</summary>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.GroupManagerViewModel.LoadGroupsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AddressBookPlus.ViewModels.GroupManagerViewModel.LoadGroupsAsync"/>.</summary>
+        </member>
+        <member name="F:AddressBookPlus.ViewModels.GroupManagerViewModel.renameGroupCommand">
+            <summary>The backing field for <see cref="P:AddressBookPlus.ViewModels.GroupManagerViewModel.RenameGroupCommand"/>.</summary>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.GroupManagerViewModel.RenameGroupCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:AddressBookPlus.ViewModels.GroupManagerViewModel.RenameGroupAsync(AddressBookPlus.Models.ContactGroup)"/>.</summary>
+        </member>
+        <member name="F:AddressBookPlus.ViewModels.GroupManagerViewModel.addGroupCommand">
+            <summary>The backing field for <see cref="P:AddressBookPlus.ViewModels.GroupManagerViewModel.AddGroupCommand"/>.</summary>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.GroupManagerViewModel.AddGroupCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AddressBookPlus.ViewModels.GroupManagerViewModel.AddGroupAsync"/>.</summary>
+        </member>
+        <member name="F:AddressBookPlus.ViewModels.GroupManagerViewModel.deleteGroupCommand">
+            <summary>The backing field for <see cref="P:AddressBookPlus.ViewModels.GroupManagerViewModel.DeleteGroupCommand"/>.</summary>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.GroupManagerViewModel.DeleteGroupCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:AddressBookPlus.ViewModels.GroupManagerViewModel.DeleteGroupAsync(AddressBookPlus.Models.ContactGroup)"/>.</summary>
+        </member>
+        <member name="T:AddressBookPlus.ViewModels.PrintViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.PrintViewModel.Templates">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.PrintViewModel._templates"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.PrintViewModel.SelectedTemplate">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.PrintViewModel._selectedTemplate"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.PrintViewModel.PreviewText">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.PrintViewModel._previewText"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.PrintViewModel.HasPreview">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.PrintViewModel._hasPreview"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.PrintViewModel.Contacts">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.PrintViewModel._contacts"/>
+        </member>
+        <member name="F:AddressBookPlus.ViewModels.PrintViewModel.loadCommand">
+            <summary>The backing field for <see cref="P:AddressBookPlus.ViewModels.PrintViewModel.LoadCommand"/>.</summary>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.PrintViewModel.LoadCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AddressBookPlus.ViewModels.PrintViewModel.LoadAsync"/>.</summary>
+        </member>
+        <member name="F:AddressBookPlus.ViewModels.PrintViewModel.previewCommand">
+            <summary>The backing field for <see cref="P:AddressBookPlus.ViewModels.PrintViewModel.PreviewCommand"/>.</summary>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.PrintViewModel.PreviewCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AddressBookPlus.ViewModels.PrintViewModel.PreviewAsync"/>.</summary>
+        </member>
+        <member name="T:AddressBookPlus.ViewModels.SearchViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.SearchViewModel.SearchQuery">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.SearchViewModel._searchQuery"/>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.SearchViewModel.Results">
+            <inheritdoc cref="F:AddressBookPlus.ViewModels.SearchViewModel._results"/>
+        </member>
+        <member name="F:AddressBookPlus.ViewModels.SearchViewModel.searchCommand">
+            <summary>The backing field for <see cref="P:AddressBookPlus.ViewModels.SearchViewModel.SearchCommand"/>.</summary>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.SearchViewModel.SearchCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:AddressBookPlus.ViewModels.SearchViewModel.SearchAsync"/>.</summary>
+        </member>
+        <member name="F:AddressBookPlus.ViewModels.SearchViewModel.clearCommand">
+            <summary>The backing field for <see cref="P:AddressBookPlus.ViewModels.SearchViewModel.ClearCommand"/>.</summary>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.SearchViewModel.ClearCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:AddressBookPlus.ViewModels.SearchViewModel.Clear"/>.</summary>
+        </member>
+        <member name="F:AddressBookPlus.ViewModels.SearchViewModel.goToDetailCommand">
+            <summary>The backing field for <see cref="P:AddressBookPlus.ViewModels.SearchViewModel.GoToDetailCommand"/>.</summary>
+        </member>
+        <member name="P:AddressBookPlus.ViewModels.SearchViewModel.GoToDetailCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:AddressBookPlus.ViewModels.SearchViewModel.GoToDetailAsync(AddressBookPlus.Models.PersonRecord)"/>.</summary>
+        </member>
+        <member name="T:AddressBookPlus.Resource">
+            <summary>
+            Android Resource Designer class.
+            Exposes the Android Resource designer assembly into the project Namespace.
+            </summary>
+        </member>
+        <member name="T:AddressBookPlus.Themes.BriteTheme">
+            <summary>
+            Generated Bootstrap theme ResourceDictionary from CSS.
+            </summary>
+        </member>
+        <member name="M:AddressBookPlus.Themes.BriteTheme.ApplyThemeMode(Microsoft.Maui.ApplicationModel.AppTheme)">
+            <summary>
+            Applies light or dark mode color overrides from the CSS [data-bs-theme=dark] block.
+            </summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Title">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Title" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Contact">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Contact" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ContactGroups">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ContactGroups" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ContactId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ContactId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Salutation">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Salutation" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FirstName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FirstName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.LastName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "LastName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Company">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Company" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.AddressLine1">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "AddressLine1" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.AddressLine2">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "AddressLine2" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.City">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "City" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.State">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "State" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PostalCode">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PostalCode" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Country">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Country" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Phone1Label">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Phone1Label" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Phone1">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Phone1" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Phone2Label">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Phone2Label" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Phone2">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Phone2" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Phone3Label">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Phone3Label" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Phone3">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Phone3" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Profession">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Profession" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Notes">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Notes" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CustomFieldLabel">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CustomFieldLabel" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CustomFieldValue">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CustomFieldValue" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Birthday">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Birthday" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Contacts">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Contacts" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ContactCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ContactCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Groups">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Groups" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedContact">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedContact" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedGroup">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedGroup" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SearchText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SearchText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Templates">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Templates" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedTemplate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedTemplate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PreviewText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PreviewText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.HasPreview">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "HasPreview" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SearchQuery">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SearchQuery" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Results">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Results" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Title">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Title" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Contact">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Contact" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ContactGroups">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ContactGroups" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ContactId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ContactId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Salutation">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Salutation" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FirstName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FirstName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.LastName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "LastName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Company">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Company" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.AddressLine1">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "AddressLine1" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.AddressLine2">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "AddressLine2" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.City">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "City" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.State">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "State" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PostalCode">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PostalCode" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Country">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Country" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Phone1Label">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Phone1Label" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Phone1">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Phone1" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Phone2Label">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Phone2Label" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Phone2">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Phone2" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Phone3Label">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Phone3Label" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Phone3">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Phone3" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Profession">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Profession" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Notes">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Notes" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CustomFieldLabel">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CustomFieldLabel" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CustomFieldValue">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CustomFieldValue" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Birthday">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Birthday" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Contacts">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Contacts" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ContactCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ContactCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Groups">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Groups" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedContact">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedContact" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedGroup">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedGroup" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SearchText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SearchText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Templates">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Templates" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedTemplate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedTemplate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PreviewText">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PreviewText" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.HasPreview">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "HasPreview" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SearchQuery">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SearchQuery" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Results">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Results" generated properties.</summary>
+        </member>
+    </members>
+</doc>
