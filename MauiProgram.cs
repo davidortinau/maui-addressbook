@@ -1,4 +1,5 @@
-﻿using MauiBootstrapTheme.Extensions;
+﻿using IconFont.Maui.BootstrapIcons;
+using MauiBootstrapTheme.Extensions;
 using MauiDevFlow.Agent;
 using Microsoft.Extensions.Logging;
 
@@ -16,6 +17,7 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+				fonts.AddFont("bootstrap-icons.ttf", "BootstrapIcons");
 			});
 
 		// Services

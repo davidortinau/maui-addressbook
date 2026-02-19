@@ -1,3 +1,4 @@
+using AddressBookPlus.Models;
 using AddressBookPlus.ViewModels;
 using AddressBookPlus.Services;
 
@@ -15,7 +16,6 @@ public partial class ContactListPage : ContentPage
         _searchService = searchService;
         BindingContext = _viewModel;
         
-        // Wire up the search service to the overlay
         MiniLookup.SearchService = _searchService;
     }
 
@@ -27,11 +27,16 @@ public partial class ContactListPage : ContentPage
 
     private async void OnContactSelected(object sender, SelectionChangedEventArgs e)
     {
-        if (e.CurrentSelection.FirstOrDefault() is Models.PersonRecord contact)
+        if (e.CurrentSelection.Count == 0) return;
+        
+        var collectionView = (CollectionView)sender;
+        var contact = e.CurrentSelection.FirstOrDefault() as PersonRecord;
+        
+        collectionView.SelectedItem = null;
+        
+        if (contact != null)
         {
-            await _viewModel.GoToDetailCommand.ExecuteAsync(contact);
-            // Clear selection so user can tap same item again
-            ((CollectionView)sender).SelectedItem = null;
+            await Shell.Current.GoToAsync($"contacts/detail?id={contact.Id}");
         }
     }
     

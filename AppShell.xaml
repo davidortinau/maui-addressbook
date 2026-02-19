@@ -4,23 +4,44 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:AddressBookPlus.Views"
+    xmlns:icons="clr-namespace:IconFont.Maui.BootstrapIcons;assembly=IconFont.Maui.BootstrapIcons"
     FlyoutBehavior="Flyout"
     Shell.BackgroundColor="{DynamicResource DarkColor}"
     Shell.ForegroundColor="{DynamicResource OnDarkColor}">
 
-    <FlyoutItem Title="Address Book" Icon="people" Route="contacts">
+    <FlyoutItem Title="Address Book" Route="contacts">
+        <FlyoutItem.Icon>
+            <FontImageSource Glyph="{x:Static icons:BootstrapIcons.PersonLinesFill}"
+                             FontFamily="{x:Static icons:BootstrapIcons.FontFamily}"
+                             Color="{DynamicResource OnDarkColor}" />
+        </FlyoutItem.Icon>
         <ShellContent ContentTemplate="{DataTemplate views:ContactListPage}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Groups" Icon="folder" Route="groups">
+    <FlyoutItem Title="Groups" Route="groups">
+        <FlyoutItem.Icon>
+            <FontImageSource Glyph="{x:Static icons:BootstrapIcons.PeopleFill}"
+                             FontFamily="{x:Static icons:BootstrapIcons.FontFamily}"
+                             Color="{DynamicResource OnDarkColor}" />
+        </FlyoutItem.Icon>
         <ShellContent ContentTemplate="{DataTemplate views:GroupManagerPage}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Search" Icon="search" Route="search">
+    <FlyoutItem Title="Search" Route="search">
+        <FlyoutItem.Icon>
+            <FontImageSource Glyph="{x:Static icons:BootstrapIcons.Search}"
+                             FontFamily="{x:Static icons:BootstrapIcons.FontFamily}"
+                             Color="{DynamicResource OnDarkColor}" />
+        </FlyoutItem.Icon>
         <ShellContent ContentTemplate="{DataTemplate views:SearchPage}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Print" Icon="printer" Route="print">
+    <FlyoutItem Title="Print" Route="print">
+        <FlyoutItem.Icon>
+            <FontImageSource Glyph="{x:Static icons:BootstrapIcons.PrinterFill}"
+                             FontFamily="{x:Static icons:BootstrapIcons.FontFamily}"
+                             Color="{DynamicResource OnDarkColor}" />
+        </FlyoutItem.Icon>
         <ShellContent ContentTemplate="{DataTemplate views:PrintPage}" />
     </FlyoutItem>
 

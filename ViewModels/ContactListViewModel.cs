@@ -48,6 +48,9 @@ public partial class ContactListViewModel : BaseViewModel
     [ObservableProperty]
     private string _searchText = string.Empty;
 
+    [ObservableProperty]
+    private string _filterLabel = string.Empty;
+
     public int ContactCount => Contacts?.Count ?? 0;
 
     [RelayCommand]
@@ -71,6 +74,7 @@ public partial class ContactListViewModel : BaseViewModel
             {
                 Contacts.Add(contact);
             }
+            OnPropertyChanged(nameof(ContactCount));
 
             Title = "Address Book Plus";
         }
@@ -94,6 +98,7 @@ public partial class ContactListViewModel : BaseViewModel
             {
                 Contacts.Add(contact);
             }
+            OnPropertyChanged(nameof(ContactCount));
         }
         else
         {
@@ -104,12 +109,40 @@ public partial class ContactListViewModel : BaseViewModel
             {
                 Contacts.Add(contact);
             }
+            OnPropertyChanged(nameof(ContactCount));
         }
     }
 
     [RelayCommand]
-    private async Task GoToDetailAsync(PersonRecord contact)
+    private async Task ToggleGroupFilterAsync(ContactGroup? group)
     {
+        if (group == null) return;
+
+        if (SelectedGroup?.Id == group.Id)
+        {
+            // Deselect — clear filter
+            foreach (var g in Groups) g.IsSelected = false;
+            FilterLabel = string.Empty;
+            await SelectGroupAsync(null);
+        }
+        else
+        {
+            // Select this group
+            foreach (var g in Groups) g.IsSelected = (g.Id == group.Id);
+            FilterLabel = $"Showing: {group.Name}";
+            await SelectGroupAsync(group);
+        }
+
+        // Force BindableLayout to refresh visual state
+        var snapshot = Groups.ToList();
+        Groups.Clear();
+        foreach (var g in snapshot) Groups.Add(g);
+    }
+
+    [RelayCommand]
+    private async Task GoToDetailAsync(PersonRecord? contact)
+    {
+        if (contact == null) return;
         await Shell.Current.GoToAsync($"contacts/detail?id={contact.Id}");
     }
 
@@ -140,6 +173,7 @@ public partial class ContactListViewModel : BaseViewModel
                     {
                         Contacts.Add(contact);
                     }
+                    OnPropertyChanged(nameof(ContactCount));
                 });
             }
             else
@@ -153,6 +187,7 @@ public partial class ContactListViewModel : BaseViewModel
                     {
                         Contacts.Add(contact);
                     }
+                    OnPropertyChanged(nameof(ContactCount));
                 });
             }
         });

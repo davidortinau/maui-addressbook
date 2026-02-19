@@ -7,20 +7,15 @@
              x:DataType="viewmodels:GroupManagerViewModel"
              Title="Groups">
     
-    <VerticalStackLayout Spacing="16" Padding="16">
+    <Grid RowDefinitions="Auto,*,Auto" Padding="16" RowSpacing="16">
         
         <!-- Header -->
-        <VerticalStackLayout Spacing="8">
-            <Label Text="Groups" StyleClass="h3" />
-            <Button Text="+ Add Group" StyleClass="btn-success" 
-                    SemanticProperties.Description="Add new group"
-                    Command="{Binding AddGroupCommand}" />
-        </VerticalStackLayout>
+        <Label Grid.Row="0" Text="Groups" StyleClass="h3" />
         
         <!-- Groups List -->
-        <CollectionView ItemsSource="{Binding Groups}" VerticalScrollBarVisibility="Always">
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Groups}" VerticalScrollBarVisibility="Always">
             <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:Group">
+                <DataTemplate x:DataType="models:ContactGroup">
                     <Border StyleClass="card,shadow" Margin="0,4">
                         <Grid Padding="16" ColumnDefinitions="Auto,*,Auto,Auto" ColumnSpacing="12">
                             
@@ -56,7 +51,12 @@
                        VerticalOptions="Center" />
             </CollectionView.EmptyView>
         </CollectionView>
+
+        <!-- Add button at bottom for consistency -->
+        <Button Grid.Row="2" Text="+ Add Group" StyleClass="btn-success,btn-lg"
+                SemanticProperties.Description="Add new group"
+                Command="{Binding AddGroupCommand}" />
         
-    </VerticalStackLayout>
+    </Grid>
     
 </ContentPage>

@@ -11,4 +11,10 @@ public class ContactGroup
     public int SlotNumber { get; set; }
     public string Name { get; set; } = string.Empty;
     public string ColorKey { get; set; } = "Primary";
+
+    [Ignore]
+    public bool IsSelected { get; set; }
+
+    [Ignore]
+    public string DisplayName => IsSelected ? $"✓ {Name}" : Name;
 }

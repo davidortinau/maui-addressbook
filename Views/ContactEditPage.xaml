@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:AddressBookPlus.ViewModels"
+             xmlns:models="clr-namespace:AddressBookPlus.Models"
              x:Class="AddressBookPlus.Views.ContactEditPage"
              x:DataType="viewmodels:ContactEditViewModel"
-             Title="{Binding PageTitle}">
+             Title="{Binding Title}">
     
     <ScrollView>
         <VerticalStackLayout Spacing="16" Padding="16">
@@ -40,7 +41,7 @@
                     
                     <VerticalStackLayout Spacing="8">
                         <Label Text="Title" StyleClass="form-label" />
-                        <Entry Text="{Binding Title}" StyleClass="form-control" />
+                        <Entry Text="{Binding JobTitle}" StyleClass="form-control" />
                     </VerticalStackLayout>
                     
                     <VerticalStackLayout Spacing="8">
@@ -99,38 +100,61 @@
                     <Grid ColumnDefinitions="*,2*" ColumnSpacing="12">
                         <VerticalStackLayout Grid.Column="0" Spacing="8">
                             <Label Text="Label" StyleClass="form-label" />
-                            <Entry Text="{Binding PhoneLabel1}" StyleClass="form-control" />
+                            <Entry Text="{Binding Phone1Label}" StyleClass="form-control" />
                         </VerticalStackLayout>
                         
                         <VerticalStackLayout Grid.Column="1" Spacing="8">
                             <Label Text="Phone Number" StyleClass="form-label" />
-                            <Entry Text="{Binding PhoneNumber1}" StyleClass="form-control" />
+                            <Entry Text="{Binding Phone1}" StyleClass="form-control" />
                         </VerticalStackLayout>
                     </Grid>
                     
                     <Grid ColumnDefinitions="*,2*" ColumnSpacing="12">
                         <VerticalStackLayout Grid.Column="0" Spacing="8">
                             <Label Text="Label" StyleClass="form-label" />
-                            <Entry Text="{Binding PhoneLabel2}" StyleClass="form-control" />
+                            <Entry Text="{Binding Phone2Label}" StyleClass="form-control" />
                         </VerticalStackLayout>
                         
                         <VerticalStackLayout Grid.Column="1" Spacing="8">
                             <Label Text="Phone Number" StyleClass="form-label" />
-                            <Entry Text="{Binding PhoneNumber2}" StyleClass="form-control" />
+                            <Entry Text="{Binding Phone2}" StyleClass="form-control" />
                         </VerticalStackLayout>
                     </Grid>
                     
                     <Grid ColumnDefinitions="*,2*" ColumnSpacing="12">
                         <VerticalStackLayout Grid.Column="0" Spacing="8">
                             <Label Text="Label" StyleClass="form-label" />
-                            <Entry Text="{Binding PhoneLabel3}" StyleClass="form-control" />
+                            <Entry Text="{Binding Phone3Label}" StyleClass="form-control" />
                         </VerticalStackLayout>
                         
                         <VerticalStackLayout Grid.Column="1" Spacing="8">
                             <Label Text="Phone Number" StyleClass="form-label" />
-                            <Entry Text="{Binding PhoneNumber3}" StyleClass="form-control" />
+                            <Entry Text="{Binding Phone3}" StyleClass="form-control" />
                         </VerticalStackLayout>
                     </Grid>
+                </VerticalStackLayout>
+            </Border>
+            
+            <!-- Groups Section -->
+            <Border StyleClass="card,shadow" Padding="16">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Groups" StyleClass="h5" />
+                    <CollectionView ItemsSource="{Binding GroupOptions}" HeightRequest="150">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:GroupSelection">
+                                <HorizontalStackLayout Spacing="12" Padding="4">
+                                    <CheckBox IsChecked="{Binding IsMember}" 
+                                              Color="{DynamicResource PrimaryColor}" />
+                                    <Label Text="{Binding GroupName}" 
+                                           StyleClass="h6"
+                                           VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                        <CollectionView.EmptyView>
+                            <Label Text="No groups available" StyleClass="small,text-muted" />
+                        </CollectionView.EmptyView>
+                    </CollectionView>
                 </VerticalStackLayout>
             </Border>
             

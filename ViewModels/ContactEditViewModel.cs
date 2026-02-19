@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
@@ -18,6 +19,8 @@ public partial class ContactEditViewModel : BaseViewModel, IQueryAttributable
         Phone1Label = "Mobile";
         Phone2Label = "Home";
         Phone3Label = "Work";
+
+        GroupOptions = new ObservableCollection<GroupSelection>();
     }
 
     [ObservableProperty]
@@ -33,7 +36,7 @@ public partial class ContactEditViewModel : BaseViewModel, IQueryAttributable
     private string _lastName = string.Empty;
 
     [ObservableProperty]
-    private string _title = string.Empty;
+    private string _jobTitle = string.Empty;
 
     [ObservableProperty]
     private string _company = string.Empty;
@@ -89,6 +92,9 @@ public partial class ContactEditViewModel : BaseViewModel, IQueryAttributable
     [ObservableProperty]
     private DateTime? _birthday;
 
+    [ObservableProperty]
+    private ObservableCollection<GroupSelection> _groupOptions;
+
     public bool IsNew => ContactId == 0;
 
     public List<string> SalutationOptions => ["", "Mr.", "Ms.", "Mrs.", "Dr.", "Prof."];
@@ -104,6 +110,7 @@ public partial class ContactEditViewModel : BaseViewModel, IQueryAttributable
         {
             ContactId = 0;
             Title = "New Contact";
+            _ = LoadGroupOptionsAsync(0);
         }
         
         OnPropertyChanged(nameof(IsNew));
@@ -120,7 +127,7 @@ public partial class ContactEditViewModel : BaseViewModel, IQueryAttributable
                 Salutation = contact.Salutation ?? string.Empty;
                 FirstName = contact.FirstName ?? string.Empty;
                 LastName = contact.LastName ?? string.Empty;
-                Title = contact.Title ?? string.Empty;
+                JobTitle = contact.Title ?? string.Empty;
                 Company = contact.Company ?? string.Empty;
                 AddressLine1 = contact.AddressLine1 ?? string.Empty;
                 AddressLine2 = contact.AddressLine2 ?? string.Empty;
@@ -142,10 +149,31 @@ public partial class ContactEditViewModel : BaseViewModel, IQueryAttributable
                 
                 base.Title = $"Edit {FirstName} {LastName}";
             }
+
+            await LoadGroupOptionsAsync(contactId);
         }
         finally
         {
             IsBusy = false;
+        }
+    }
+
+    private async Task LoadGroupOptionsAsync(int contactId)
+    {
+        var allGroups = await _dataService.GetGroupsAsync();
+        var memberGroupIds = contactId > 0
+            ? await _dataService.GetGroupIdsForPersonAsync(contactId)
+            : new List<int>();
+
+        GroupOptions.Clear();
+        foreach (var group in allGroups)
+        {
+            GroupOptions.Add(new GroupSelection
+            {
+                GroupId = group.Id,
+                GroupName = group.Name,
+                IsMember = memberGroupIds.Contains(group.Id)
+            });
         }
     }
 
@@ -169,7 +197,7 @@ public partial class ContactEditViewModel : BaseViewModel, IQueryAttributable
                 Salutation = Salutation,
                 FirstName = FirstName,
                 LastName = LastName,
-                Title = Title,
+                Title = JobTitle,
                 Company = Company,
                 AddressLine1 = AddressLine1,
                 AddressLine2 = AddressLine2,
@@ -190,17 +218,28 @@ public partial class ContactEditViewModel : BaseViewModel, IQueryAttributable
                 Birthday = Birthday
             };
 
+            int savedId;
             if (IsNew)
             {
-                var newContactId = await _dataService.SaveContactAsync(contact);
-                WeakReferenceMessenger.Default.Send(new ContactSavedMessage(newContactId));
+                savedId = await _dataService.SaveContactAsync(contact);
             }
             else
             {
                 await _dataService.SaveContactAsync(contact);
-                WeakReferenceMessenger.Default.Send(new ContactSavedMessage(ContactId));
+                savedId = ContactId;
             }
 
+            // Save group memberships
+            var currentGroupIds = await _dataService.GetGroupIdsForPersonAsync(savedId);
+            foreach (var groupOpt in GroupOptions)
+            {
+                if (groupOpt.IsMember && !currentGroupIds.Contains(groupOpt.GroupId))
+                    await _dataService.AddToGroupAsync(savedId, groupOpt.GroupId);
+                else if (!groupOpt.IsMember && currentGroupIds.Contains(groupOpt.GroupId))
+                    await _dataService.RemoveFromGroupAsync(savedId, groupOpt.GroupId);
+            }
+
+            WeakReferenceMessenger.Default.Send(new ContactSavedMessage(savedId));
             await Shell.Current.GoToAsync("..");
         }
         finally
@@ -213,5 +252,18 @@ public partial class ContactEditViewModel : BaseViewModel, IQueryAttributable
     private async Task CancelAsync()
     {
         await Shell.Current.GoToAsync("..");
+    }
+}
+
+public class GroupSelection : ObservableObject
+{
+    public int GroupId { get; set; }
+    public string GroupName { get; set; } = "";
+
+    private bool _isMember;
+    public bool IsMember
+    {
+        get => _isMember;
+        set => SetProperty(ref _isMember, value);
     }
 }

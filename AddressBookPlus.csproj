@@ -41,10 +41,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#a2e436" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#a2e436" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -67,6 +67,7 @@
 		<PackageReference Include="sqlite-net-pcl" Version="1.*" />
 		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.*" />
 		<PackageReference Include="Plugin.Maui.BootstrapTheme" Version="0.1.0-preview.5" />
+		<PackageReference Include="IconFont.Maui.BootstrapIcons" Version="1.0.0-preview.1" ExcludeAssets="buildTransitive" />
 		<PackageReference Include="Redth.MauiDevFlow.Agent" Version="*" />
 	</ItemGroup>
 

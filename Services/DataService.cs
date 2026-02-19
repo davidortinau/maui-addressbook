@@ -11,7 +11,7 @@ public class DataService : IDataService
     {
         if (_database != null) return;
 
-        var dbPath = Path.Combine(FileSystem.AppDataDirectory, "addressbook.db3");
+        var dbPath = Path.Combine(FileSystem.AppDataDirectory, "addressbook_v2.db3");
         _database = new SQLiteAsyncConnection(dbPath);
 
         await _database.CreateTableAsync<PersonRecord>();
@@ -39,21 +39,57 @@ public class DataService : IDataService
         {
             var sampleContacts = new[]
             {
-                new PersonRecord { FirstName = "Jane", LastName = "Smith", Company = "Acme Corp", Phone1 = "555-0101", City = "Seattle" },
-                new PersonRecord { FirstName = "Bob", LastName = "Johnson", Company = "Tech Solutions", Phone1 = "555-0102", City = "Portland" },
-                new PersonRecord { FirstName = "Alice", LastName = "Williams", Company = "Design Studio", Phone1 = "555-0103", Phone2 = "555-0104", City = "San Francisco" },
-                new PersonRecord { FirstName = "David", LastName = "Brown", Company = "Brown & Associates", Phone1 = "555-0105", City = "Los Angeles", Notes = "Law firm partner" },
-                new PersonRecord { FirstName = "Sarah", LastName = "Davis", Company = "Medical Center", Phone1 = "555-0106", City = "Denver" },
-                new PersonRecord { FirstName = "Michael", LastName = "Wilson", Phone1 = "555-0107", Phone2 = "555-0108", City = "Austin", Notes = "College friend" },
-                new PersonRecord { FirstName = "Emily", LastName = "Taylor", Company = "Marketing Plus", Phone1 = "555-0109", City = "Chicago" },
-                new PersonRecord { FirstName = "James", LastName = "Anderson", Company = "Anderson Consulting", Phone1 = "555-0110", Phone3 = "555-0111", City = "Boston" },
-                new PersonRecord { FirstName = "Lisa", LastName = "Martinez", Phone1 = "555-0112", City = "Miami", Notes = "Neighbor" },
-                new PersonRecord { FirstName = "Robert", LastName = "Garcia", Company = "Garcia Industries", Phone1 = "555-0113", City = "Phoenix" }
+                new PersonRecord { Salutation = "Ms.", FirstName = "Jane", LastName = "Smith", Title = "VP of Engineering", Company = "Acme Corp", AddressLine1 = "123 Pine Street", AddressLine2 = "Suite 400", City = "Seattle", State = "WA", PostalCode = "98101", Country = "USA", Phone1Label = "Home", Phone1 = "555-0101", Phone2Label = "Work", Phone2 = "555-0200", Phone3Label = "Mobile", Phone3 = "555-0301", Profession = "Software Engineer", Birthday = new DateTime(1985, 3, 15), Notes = "Met at WWDC 2019", CustomFieldLabel = "Twitter", CustomFieldValue = "@janesmith" },
+                new PersonRecord { FirstName = "Bob", LastName = "Johnson", Title = "CTO", Company = "Tech Solutions", AddressLine1 = "456 Oak Ave", City = "Portland", State = "OR", PostalCode = "97201", Phone1 = "555-0102", Phone2Label = "Work", Phone2 = "555-0202", Profession = "Technology", Notes = "Old college roommate" },
+                new PersonRecord { FirstName = "Alice", LastName = "Williams", Title = "Creative Director", Company = "Design Studio", AddressLine1 = "789 Market St", City = "San Francisco", State = "CA", PostalCode = "94103", Phone1 = "555-0103", Phone2 = "555-0104", Profession = "Graphic Design", Birthday = new DateTime(1990, 7, 22) },
+                new PersonRecord { FirstName = "David", LastName = "Brown", Title = "Senior Partner", Company = "Brown & Associates", AddressLine1 = "321 Wilshire Blvd", City = "Los Angeles", State = "CA", PostalCode = "90010", Phone1 = "555-0105", Phone2Label = "Office", Phone2 = "555-0205", Profession = "Attorney", Notes = "Law firm partner" },
+                new PersonRecord { FirstName = "Sarah", LastName = "Davis", Title = "Physician", Company = "Medical Center", AddressLine1 = "100 Health Way", City = "Denver", State = "CO", PostalCode = "80202", Phone1 = "555-0106", Profession = "Medicine", Birthday = new DateTime(1978, 11, 3) },
+                new PersonRecord { FirstName = "Michael", LastName = "Wilson", AddressLine1 = "55 Elm Street", City = "Austin", State = "TX", PostalCode = "73301", Phone1 = "555-0107", Phone2 = "555-0108", Notes = "College friend" },
+                new PersonRecord { FirstName = "Emily", LastName = "Taylor", Title = "Marketing Manager", Company = "Marketing Plus", AddressLine1 = "200 Michigan Ave", City = "Chicago", State = "IL", PostalCode = "60601", Phone1 = "555-0109", Profession = "Marketing" },
+                new PersonRecord { FirstName = "James", LastName = "Anderson", Title = "Principal Consultant", Company = "Anderson Consulting", AddressLine1 = "75 State Street", City = "Boston", State = "MA", PostalCode = "02109", Phone1 = "555-0110", Phone3Label = "Fax", Phone3 = "555-0111", Profession = "Consulting" },
+                new PersonRecord { FirstName = "Lisa", LastName = "Martinez", AddressLine1 = "400 Brickell Ave", City = "Miami", State = "FL", PostalCode = "33131", Phone1 = "555-0112", Notes = "Neighbor", Birthday = new DateTime(1992, 5, 10) },
+                new PersonRecord { FirstName = "Robert", LastName = "Garcia", Title = "CEO", Company = "Garcia Industries", AddressLine1 = "1 Industrial Pkwy", City = "Phoenix", State = "AZ", PostalCode = "85001", Phone1 = "555-0113", Phone2Label = "Work", Phone2 = "555-0213", Profession = "Manufacturing" }
             };
 
             foreach (var contact in sampleContacts)
             {
                 await _database.InsertAsync(contact);
+            }
+
+            // Seed group memberships
+            var allGroups = await _database.Table<ContactGroup>().ToListAsync();
+            var familyGroup = allGroups.FirstOrDefault(g => g.Name == "Family");
+            var friendsGroup = allGroups.FirstOrDefault(g => g.Name == "Friends");
+            var workGroup = allGroups.FirstOrDefault(g => g.Name == "Work");
+
+            var allContacts = await _database.Table<PersonRecord>().ToListAsync();
+            
+            if (familyGroup != null)
+            {
+                // Jane Smith, Lisa Martinez, Michael Wilson → Family
+                foreach (var name in new[] { "Smith", "Martinez", "Wilson" })
+                {
+                    var c = allContacts.FirstOrDefault(p => p.LastName == name);
+                    if (c != null) await _database.InsertAsync(new ContactGroupMembership { PersonId = c.Id, GroupId = familyGroup.Id });
+                }
+            }
+            if (friendsGroup != null)
+            {
+                // Bob Johnson, Alice Williams, Michael Wilson → Friends
+                foreach (var name in new[] { "Johnson", "Williams", "Wilson" })
+                {
+                    var c = allContacts.FirstOrDefault(p => p.LastName == name);
+                    if (c != null) await _database.InsertAsync(new ContactGroupMembership { PersonId = c.Id, GroupId = friendsGroup.Id });
+                }
+            }
+            if (workGroup != null)
+            {
+                // Jane Smith, David Brown, Emily Taylor, James Anderson, Robert Garcia → Work
+                foreach (var name in new[] { "Smith", "Brown", "Taylor", "Anderson", "Garcia" })
+                {
+                    var c = allContacts.FirstOrDefault(p => p.LastName == name);
+                    if (c != null) await _database.InsertAsync(new ContactGroupMembership { PersonId = c.Id, GroupId = workGroup.Id });
+                }
             }
         }
     }

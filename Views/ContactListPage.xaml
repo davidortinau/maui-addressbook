@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage x:Class="AddressBookPlus.Views.ContactListPage"
+             x:Name="ThisPage"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:AddressBookPlus.Models"
@@ -35,17 +36,13 @@
         <ScrollView Grid.Row="1" 
                     Orientation="Horizontal" 
                     Margin="0,0,0,8">
-            <HorizontalStackLayout Spacing="8" 
+            <HorizontalStackLayout x:Name="GroupFilterBar" Spacing="8"
                                    BindableLayout.ItemsSource="{Binding Groups}">
-                <Button Text="All" 
-                        StyleClass="btn-dark,btn-sm" 
-                        Command="{Binding SelectGroupCommand}" />
-                
                 <BindableLayout.ItemTemplate>
                     <DataTemplate x:DataType="models:ContactGroup">
-                        <Button Text="{Binding Name}" 
-                                StyleClass="btn-outline-primary,btn-sm" 
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ContactListViewModel}}, Path=SelectGroupCommand}" 
+                        <Button Text="{Binding DisplayName}" 
+                                StyleClass="btn-outline-primary,btn-sm"
+                                Command="{Binding Source={x:Reference ThisPage}, Path=BindingContext.ToggleGroupFilterCommand}" 
                                 CommandParameter="{Binding .}" />
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
@@ -53,17 +50,21 @@
         </ScrollView>
 
         <!-- Search bar -->
-        <SearchBar Grid.Row="2" 
-                   StyleClass="form-control" 
-                   Placeholder="Type to jump..." 
-                   Text="{Binding SearchText}" 
-                   Margin="0,0,0,8" />
+        <VerticalStackLayout Grid.Row="2" Spacing="4" Margin="0,0,0,8">
+            <SearchBar StyleClass="form-control" 
+                       Placeholder="Type to jump..." 
+                       Text="{Binding SearchText}" />
+            <Label Text="{Binding FilterLabel}" 
+                   StyleClass="small"
+                   TextColor="{DynamicResource PrimaryColor}"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+        </VerticalStackLayout>
 
         <!-- Contact list -->
         <CollectionView Grid.Row="3" 
                         ItemsSource="{Binding Contacts}" 
                         SelectionMode="Single" 
-                        SelectedItem="{Binding SelectedContact}" 
                         SelectionChanged="OnContactSelected">
             
             <CollectionView.ItemTemplate>
