@@ -25,11 +25,10 @@ public partial class ContactListPage : ContentPage
         await _viewModel.LoadDataCommand.ExecuteAsync(null);
     }
 
-    private async void OnContactSelected(object sender, SelectionChangedEventArgs e)
+    private async void OnContactSelected(object? sender, SelectionChangedEventArgs e)
     {
-        if (e.CurrentSelection.Count == 0) return;
+        if (e.CurrentSelection.Count == 0 || sender is not CollectionView collectionView) return;
         
-        var collectionView = (CollectionView)sender;
         var contact = e.CurrentSelection.FirstOrDefault() as PersonRecord;
         
         collectionView.SelectedItem = null;
@@ -40,7 +39,7 @@ public partial class ContactListPage : ContentPage
         }
     }
     
-    private void OnQuickLookupClicked(object sender, EventArgs e)
+    private void OnQuickLookupClicked(object? sender, EventArgs e)
     {
         if (MiniLookup.IsVisible)
         {

@@ -41,9 +41,9 @@ Built with the [Brite Bootswatch theme](https://bootswatch.com/brite/) via [Plug
 | UI | XAML + Shell navigation |
 | Pattern | MVVM with [CommunityToolkit.Mvvm](https://www.nuget.org/packages/CommunityToolkit.Mvvm) source generators |
 | Data | SQLite via [sqlite-net-pcl](https://www.nuget.org/packages/sqlite-net-pcl) |
-| Theme | [Plugin.Maui.BootstrapTheme](https://www.nuget.org/packages/Plugin.Maui.BootstrapTheme) 0.1.0-preview.5 |
+| Theme | [Plugin.Maui.BootstrapTheme](https://www.nuget.org/packages/Plugin.Maui.BootstrapTheme) 0.1.0-preview.6 |
 | Icons | [IconFont.Maui.BootstrapIcons](https://www.nuget.org/packages/IconFont.Maui.BootstrapIcons) 1.0.0-preview.1 |
-| Framework | .NET 10 / MAUI 10 |
+| Framework | .NET 11 / MAUI 11 (RC1) |
 
 ## Getting Started
 
@@ -53,16 +53,16 @@ git clone https://github.com/davidortinau/maui-addressbook.git
 cd maui-addressbook
 
 # Run on Mac Catalyst
-dotnet build -f net10.0-maccatalyst -t:Run
+dotnet build src/AddressBookPlus.csproj -f net11.0-maccatalyst -t:Build,Run
 
 # Run on iOS Simulator
-dotnet build -f net10.0-ios -t:Run -p:_DeviceName=:v2:udid=<SIMULATOR_UDID>
+dotnet build src/AddressBookPlus.csproj -f net11.0-ios -t:Build,Run -p:_DeviceName=:v2:udid=<SIMULATOR_UDID>
 
 # Run on Android Emulator
-dotnet build -f net10.0-android -t:Run
+dotnet build src/AddressBookPlus.csproj -f net11.0-android -t:Build,Run
 ```
 
-Requires .NET 10 SDK and the MAUI workload (`dotnet workload install maui`).
+Requires .NET 11 SDK (RC1 or later) and the MAUI workload (`dotnet workload install maui`).
 
 ## Project Structure
 

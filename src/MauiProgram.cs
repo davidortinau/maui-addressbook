@@ -1,7 +1,7 @@
 ﻿using IconFont.Maui.BootstrapIcons;
 using MauiBootstrapTheme.Extensions;
-using MauiDevFlow.Agent;
 using Microsoft.Extensions.Logging;
+using Microsoft.Maui.DevFlow.Agent;
 
 namespace AddressBookPlus;
 

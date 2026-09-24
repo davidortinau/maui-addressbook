@@ -21,7 +21,7 @@ public partial class MiniLookupOverlay : ContentView
         SearchEntry.Focus();
     }
 
-    private async void OnSearchTextChanged(object sender, TextChangedEventArgs e)
+    private async void OnSearchTextChanged(object? sender, TextChangedEventArgs e)
     {
         if (SearchService == null) return;
         
@@ -45,13 +45,13 @@ public partial class MiniLookupOverlay : ContentView
         }
     }
 
-    private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
     {
         _selectedContact = e.CurrentSelection.FirstOrDefault() as PersonRecord;
         CopyButton.IsEnabled = _selectedContact != null && !string.IsNullOrEmpty(_selectedContact.Phone1);
     }
 
-    private async void OnCopyClicked(object sender, EventArgs e)
+    private async void OnCopyClicked(object? sender, EventArgs e)
     {
         if (_selectedContact?.Phone1 != null)
         {
@@ -65,7 +65,7 @@ public partial class MiniLookupOverlay : ContentView
         }
     }
 
-    private void OnCloseClicked(object sender, EventArgs e)
+    private void OnCloseClicked(object? sender, EventArgs e)
     {
         IsVisible = false;
         SearchEntry.Text = string.Empty;

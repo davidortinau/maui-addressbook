@@ -1,5 +1,4 @@
 using AddressBookPlus.Models;
-using System.Reflection;
 using System.Text;
 
 namespace AddressBookPlus.Services;
@@ -32,13 +31,8 @@ public class PrintService : IPrintService
 
     private async Task<string> LoadTemplateAsync(string fileName)
     {
-        var assembly = Assembly.GetExecutingAssembly();
-        var resourceName = $"AddressBookPlus.Resources.Raw.print_templates.{fileName}";
-        
-        using var stream = assembly.GetManifestResourceStream(resourceName);
-        if (stream == null)
-            throw new FileNotFoundException($"Template file '{fileName}' not found in embedded resources.");
-        
+        // Templates ship as MauiAsset items (Resources/Raw), not embedded resources
+        using var stream = await FileSystem.OpenAppPackageFileAsync($"print_templates/{fileName}");
         using var reader = new StreamReader(stream);
         return await reader.ReadToEndAsync();
     }

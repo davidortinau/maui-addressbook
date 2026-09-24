@@ -11,11 +11,10 @@ public partial class SearchPage : ContentPage
         BindingContext = viewModel;
     }
 
-    private async void OnResultSelected(object sender, SelectionChangedEventArgs e)
+    private async void OnResultSelected(object? sender, SelectionChangedEventArgs e)
     {
-        if (e.CurrentSelection.Count == 0) return;
+        if (e.CurrentSelection.Count == 0 || sender is not CollectionView collectionView) return;
 
-        var collectionView = (CollectionView)sender;
         var contact = e.CurrentSelection.FirstOrDefault() as PersonRecord;
         collectionView.SelectedItem = null;
 
